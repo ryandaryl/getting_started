@@ -37,6 +37,9 @@ SECRET_KEY = 'i+acxn5(akgsn!sr4^qgf(^m&*@+g1@u^t@=8s@axc41ml*f=s'
 DEBUG = True
 
 
+TEST_RUNNER = 'gettingstarted.heroku_test_runner.HerokuDiscoverRunner'
+
+
 
 
 # Application definition
@@ -139,6 +142,7 @@ USE_TZ = True
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+DATABASES['default']['TEST'] = {'NAME': DATABASES['default']['NAME']}
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
